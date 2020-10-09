@@ -13,9 +13,9 @@ app.get("/", (req, res)=>{
 })
 
 app.post("/resumetoBase64", (req, res)=>{
-    console.log(req.body);
-    const resumeFile = req.body.message;
-    request.get('http://tinypng.org/images/example-shrunk-8cadd4c7.png', function (error, response, body) {
+   const resumeFile = req.body.message;
+   console.log(resumeFile);
+    request.get(resumeFile, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             data = "data:" + response.headers["content-type"] + ";base64," + Buffer.from(body).toString('base64');
             res.send(data);
