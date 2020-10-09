@@ -18,7 +18,21 @@ app.post("/resumetoBase64", (req, res)=>{
     request.get(resumeFile, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             data = "data:" + response.headers["content-type"] + ";base64," + Buffer.from(body).toString('base64');
-            res.send(data);
+            res.status(200).json({
+                "messages": [
+                  {
+                    "text": "Came and changed to Base64"
+                  }
+                ],
+                "actions": [
+                  {
+                    "type": "set_variable",
+                    "data": {
+                      "resumeBase64": data
+                    }
+                  }
+                ]
+              });
         }
     });
 })
