@@ -9,8 +9,8 @@ app.get("/", (req, res)=>{
 })
 
 app.post("/resumetoBase64", (req, res)=>{
-    
-    res.send(req.body);
+    console.log(req.body);
+    res.send("Came to POST Request");
 })
 app.listen(port, ()=>{
     console.log("Server is listening on PORT: "+port);
